@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2rntilfxgq7a"]
+
+[ext_resource type="Texture2D" uid="uid://3xo7a5juj7ls" path="res://assets/wall.svg" id="1_amllo"]
+[ext_resource type="Script" path="res://levels/wall.gd" id="1_bkeod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdxi8"]
+size = Vector2(129, 125)
+
+[node name="Wall" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_bkeod")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_kdxi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_amllo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

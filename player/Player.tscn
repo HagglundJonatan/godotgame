@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2yn2r0a57g5r"]
+
+[ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_xwlk0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fa5uv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_37ikj"]
+script/source = "extends AnimatedSprite2D
+
+var last_pos = Vector2()
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _draw() -> void:
+	draw_circle(position, 1, Color.ALICE_BLUE)
+	print(\"Sprite pos: %.2f, \" % position.x, \"%.2f\" % position.y)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if position != last_pos:
+		last_pos = position
+		queue_redraw()
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ads7o"]
+size = Vector2(120, 121)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_xwlk0")
+speed = 3000.0
+fire_power = 2.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_fa5uv")
+animation = &"down"
+script = SubResource("GDScript_37ikj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ads7o")

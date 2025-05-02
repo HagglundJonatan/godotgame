@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwx61lfl3yxkg"]
+
+[ext_resource type="Script" path="res://ui/MainMenuScript.gd" id="1_8ojil"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_8ojil")
+
+[node name="GameTitle" type="Label" parent="."]
+offset_left = 512.0
+offset_top = 81.0
+offset_right = 648.0
+offset_bottom = 156.0
+text = "First Godot Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartNewGameBtn" type="Button" parent="."]
+offset_left = 488.0
+offset_top = 182.0
+offset_right = 664.0
+offset_bottom = 286.0
+text = "Start new game"
+
+[node name="LoadGameBtn" type="Button" parent="."]
+offset_left = 489.0
+offset_top = 314.0
+offset_right = 665.0
+offset_bottom = 418.0
+text = "Load game"

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlao3q8yclck0"]
+
+[ext_resource type="PackedScene" uid="uid://b2yn2r0a57g5r" path="res://player/Player.tscn" id="1_4ga2j"]
+[ext_resource type="Script" path="res://levels/level_1.gd" id="1_s674x"]
+[ext_resource type="PackedScene" uid="uid://2rntilfxgq7a" path="res://levels/Wall.tscn" id="2_bb1g5"]
+[ext_resource type="Texture2D" uid="uid://3xo7a5juj7ls" path="res://assets/wall.svg" id="4_55j67"]
+[ext_resource type="Script" path="res://ui/InfoBox.gd" id="5_36sjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp3ag"]
+size = Vector2(1395, 126)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_s674x")
+
+[node name="Player" parent="." instance=ExtResource("1_4ga2j")]
+position = Vector2(160, 117)
+speed = 100.0
+
+[node name="Wall" parent="." instance=ExtResource("2_bb1g5")]
+position = Vector2(-191, 292)
+
+[node name="Wall2" parent="." instance=ExtResource("2_bb1g5")]
+position = Vector2(136, 363)
+
+[node name="Wall3" parent="." instance=ExtResource("2_bb1g5")]
+position = Vector2(792, 372)
+
+[node name="Wall4" parent="." instance=ExtResource("2_bb1g5")]
+position = Vector2(668, 94)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-304, 479)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(698.5, 64)
+shape = SubResource("RectangleShape2D_qp3ag")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(10.7692, 1)
+texture = ExtResource("4_55j67")
+centered = false
+
+[node name="InfoBox" type="Node2D" parent="."]
+script = ExtResource("5_36sjj")
